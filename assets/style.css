@@ -2,3 +2,9 @@
   background-color: #3346ff;
   color: aliceblue;
 }
+@media all and (max-width: 480px) {
+  .custom-class {
+    width: 100%;
+    display: block;
+  }
+}
