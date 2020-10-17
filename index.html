@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dogs For Suzanne</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">Suzanne!!!!!</h1>
+        <p class="lead"><h2>Click The Button!!!</h2></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-12">
+        <button id="cat-button" class="btn btn-info btn-lg btn-block">
+          Click Me
+        </button>
+        <div id="images"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+          //// button listner
+          $("#cat-button").on("click", function () {
+            //varibale set to the giphy api link
+            var queryURL =
+              "https://api.giphy.com/v1/gifs/random?api_key=xYBjZ8nu8rzYyzkJs8Ly6kFwhit4fjdO&tag=dogs&rating=r";
+
+            //makes promise/call to
+            $.ajax({
+              url: queryURL,
+              method: "GET",
+            })
+
+              // .then is a promise call
+              .then(function (response) {
+                //image url
+                var imageUrl = response.data.image_original_url;
+
+                //
+                var catImage = $("<img>");
+
+                //
+                catImage.attr("src", imageUrl);
+                catImage.attr("alt", "cat image");
+
+                //
+                $("#images").prepend(catImage);
+              });
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
